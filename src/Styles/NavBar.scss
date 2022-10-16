@@ -1,0 +1,25 @@
+.navbar_container {
+  height: 65px;
+  background-color: #0BC5EB;
+  // justify-content: space-between;
+  // align-items: center;
+  // display: flex;
+
+  display: flex;
+  overflow: hidden;
+  // margin: 1em 0;
+  margin: 0;
+  color: #fff;
+  border: 1px solid #333;
+  align-items: center;
+
+  .navbar_fill_remaining_space {
+    flex: auto;
+  }
+
+  .navbar_right {
+    padding: 1em;
+    background-color: #0BC5EB;
+    margin-right: auto;
+  }
+}

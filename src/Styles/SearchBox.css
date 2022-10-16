@@ -1,0 +1,29 @@
+.searchbox_container {
+  position: relative;
+}
+
+.searchbox_container .searchbox_icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 4px;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.searchbox_container .searchbox_input {
+  border: 2px solid #0BC5EB;
+  width: 270px;
+  border-radius: 8px;
+  height: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 2rem;
+  font-size: x-large;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=SearchBox.css.map */

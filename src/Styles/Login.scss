@@ -1,0 +1,185 @@
+.login {
+  background-image: url('../Images/background-login.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px;
+  height: 100vh;
+
+
+  .login_container {
+    border: 2px solid #06C4FD;
+    height: 600px;
+    width: 80vw;
+    margin: auto;
+    background-color: #fbfbfb;
+    display: flex;
+    border-radius: 5px;
+
+    // margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-53%);
+
+    .login_children {
+      flex: 1;
+
+      .login_image {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      .signin_form_container {
+        border: 2px solid #f0efef;
+        height: 93%;
+        width: 80%;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+        .signin_change_user_type {
+          color: #0675F5;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .signin_input {
+          height: 50px;
+          width: 80%;
+          margin: auto;
+          margin-bottom: 20px;
+          border-radius: 6px;
+          border: 2px solid #f0efef;
+          font-size: large;
+          text-indent: 10px;
+          outline-color: #08D0FC
+        }
+
+        .signin_button {
+          height: 50px;
+          width: 80%;
+          margin: auto;
+          margin-bottom: 20px;
+          border-radius: 6px;
+          border: 2px solid #f0efef;
+          font-size: large;
+          background-color: #08D0FC;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #0675F5;
+          }
+        }
+
+        .signin_form {
+          display: grid;
+
+          .login_label {
+            text-align: left;
+            padding-left: 42px;
+            padding-bottom: 6px;
+          }
+        }
+      }
+
+      .login_form_container {
+        border: 2px solid #f0efef;
+        height: 80%;
+        width: 80%;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+        .login_change_user_type {
+          color: #0675F5;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .login_input {
+          height: 50px;
+          width: 80%;
+          margin: auto;
+          margin-bottom: 20px;
+          border-radius: 6px;
+          border: 2px solid #f0efef;
+          font-size: large;
+          text-indent: 10px;
+          outline-color: #08D0FC
+        }
+
+        .login_button {
+          height: 50px;
+          width: 80%;
+          margin: auto;
+          margin-bottom: 20px;
+          border-radius: 6px;
+          border: 2px solid #f0efef;
+          font-size: large;
+          background-color: #08D0FC;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #0675F5;
+          }
+        }
+
+        .login_form {
+          display: grid;
+
+          .login_label {
+            text-align: left;
+            padding-left: 42px;
+            padding-bottom: 6px;
+          }
+        }
+
+        .third_party_login_button {
+          width: 48%;
+          height: 50px;
+          background-color: #08D0FC;
+          color: white;
+          font-size: large;
+          margin-bottom: 20px;
+          border-radius: 6px;
+          border: 2px solid #f0efef;
+          font-size: large;
+          background-color: #08D0FC;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #0675F5;
+          }
+        }
+      }
+    }
+
+    // .login_children:first-child {
+    //   border: 2px solid red;
+    //   position: relative;
+    //   top: 50%;
+    //   -webkit-transform: translateY(-50%);
+    //   -ms-transform: translateY(-50%);
+    //   transform: translateY(-50%);
+    // }
+  }
+}
