@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import HomeIcon from '../Images/Home-icon.png'
@@ -6,11 +7,11 @@ import MapService from '../Services/map';
 import Helpers from '../Helpers/helper';
 
 const containerStyle = {
-  width: '700px',
-  height: '700px'
+  width: '1200px',
+  height: '600px'
 };
 
-function SimpleMap() {
+function SimpleMap({searchPlace, lat, setLat, lng, setLng, filter}) {
   
   const { isLoaded } = useJsApiLoader({
     // id: 'google-map-script',
@@ -44,8 +45,8 @@ function SimpleMap() {
   const [map, setMap] = React.useState(null);
   // eslint-disable-next-line no-unused-vars
   const [key, setKey] = useState(Math.floor(Math.random() * (10000000 - 0 + 1)) + 0)
-  const [lat, setLat] = useState('')
-  const [lng, setLng] = useState('')
+  // const [lat, setLat] = useState('')
+  // const [lng, setLng] = useState('')
   // eslint-disable-next-line no-unused-vars
   const [markerMap, setMarkerMap] = useState({});
   // eslint-disable-next-line no-unused-vars
@@ -60,7 +61,7 @@ function SimpleMap() {
   const [showPopUp, setShowPopUp] = useState(false)
   const [showCreateNewForm, setShowCreateNewForm] = useState(false)
   const [eventLatLng, setEventLatLng] = useState({})
-  const [formName, setFormName] = useState({name: ''})
+  const [formName, setFormName] = useState({name: ''});
 
 
   const onLoad = React.useCallback(function callback(map) {
@@ -137,6 +138,10 @@ const handleChangeFormName = (event) => {
   });
 };
 
+const handleFormClose = () => {
+  setShowCreateNewForm(false)
+}
+
 const handleFormSubmit = (e) => {
 
   e.preventDefault()
@@ -152,8 +157,47 @@ const handleFormSubmit = (e) => {
       })
 }
 
+const onMapLoad = map => {
+  const bounds = new window.google.maps.LatLngBounds(center);
+  map.fitBounds(bounds);
+  setMap(map)
+
+
+  let request = {
+    query: "Museum of Contemporary Art Australia",
+    // query: "Restaurants",
+    // type: "Restaurants",
+    fields: ["name", "geometry"]
+  };
+
+  let service = new window.google.maps.places.PlacesService(map);
+  const req = {
+    query: 'restaurant', 
+    type: 'restaurant',
+    location:{lat: 53.651471157386375, lng: -1.7983476880373894},
+    radius: 1500
+  }
+  service.nearbySearch(req, (results, status) => {
+    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        console.log(results, 'restaurants')
+        // coords.push(results[i]);
+      }
+    }
+  })
+
+  service.findPlaceFromQuery(request, (results, status) => {
+    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        console.log(results, 'results')
+        coords.push(results[i]);
+      }
+    }
+  });
+};
+
   return isLoaded ? (
-    <div>
+    <div className='map_container' style={{display: 'flex', justifyContent: 'center'}}>
 
       <GoogleMap
         key={key}
@@ -161,22 +205,28 @@ const handleFormSubmit = (e) => {
         // center={center}
         center={{lat, lng}}
         zoom={10}
-        onLoad={onLoad}
+        // onLoad={onLoad}
+        onLoad={onMapLoad}
         onUnmount={onUnmount}
         onClick={event => handleClick(event)}
       >
         {showCreateNewForm ? (
-  <div  style={{ height: '400px', width: '300px'}}>
+          <div  style={{ height: '400px', width: '300px'}}>
 
-  <div style={{border: '2px solid red', height: '400px', width: '300px', position: 'fixed', backgroundColor: 'aliceblue'}}>
-    <h3>Save place</h3>
-    <form action="" onSubmit={handleFormSubmit}>
-      <label htmlFor="Place" className="place_label">Place</label>
-      <input type="text" placeholder='Place' name="Place" onChange={handleChangeFormName}/>
-      <button>Save</button>
-    </form>
-  </div>
-  </div>
+            <div style={{border: '2px solid grey', height: '400px', width: '300px', position: 'fixed', backgroundColor: 'aliceblue'}}>
+              <div style={{height: '20px', borderBottom: '2px solid grey'}}>
+                <div style={{float: 'right', paddingRight: '3px', cursor: 'pointer'}} onClick={handleFormClose}>
+                  X
+                </div>
+              </div>
+              <h3>Save place</h3>
+              <form action="" onSubmit={handleFormSubmit}>
+                <label htmlFor="Place" className="place_label">Place</label>
+                <input type="text" placeholder='Place' name="Place" onChange={handleChangeFormName}/>
+                <button>Save</button>
+              </form>
+            </div>
+          </div>
         ) :<></>}
 
           {Helpers.removeNonUniqueObjectsFromArrayBasedOnObjectValue(places).map(place => (
