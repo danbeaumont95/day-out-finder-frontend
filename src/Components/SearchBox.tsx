@@ -7,9 +7,9 @@ import { Dispatch, SetStateAction} from 'react';
 interface Props {
   searchPlace: string;
   setSearchPlace: Dispatch<SetStateAction<string>>;
-  lat: string;
+  lat: number;
   setLat: any;
-  lng: string;
+  lng: number;
   setLng: any;
 }
 
@@ -20,17 +20,14 @@ const SearchBox: React.FC<Props> = ({searchPlace, setSearchPlace, lat, setLat, l
   };
 
   const handleClick = () => {
-
       fetch("https://maps.googleapis.com/maps/api/geocode/json?address="+searchPlace+'&key='+process.env.REACT_APP_google_maps_api)
         .then(response => response.json())
         .then(data => {
-          console.log(data, 'data123')
           const latitude = data.results[0].geometry.location.lat;
           const longitude = data.results[0].geometry.location.lng;
           setLat(latitude)
           setLng(longitude)
         })
-
   }
 
   return (
