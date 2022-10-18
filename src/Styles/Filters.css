@@ -1,0 +1,23 @@
+.filters_container .search_category {
+  margin-right: 10px;
+}
+
+.filters_container .searchbox_button {
+  border: 2px solid #0BC5EB;
+  width: 90px;
+  border-radius: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: medium;
+  background-color: #0BC5EB;
+  color: white;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.filters_container .searchbox_button:hover {
+  cursor: pointer;
+  background-color: #a8edfb;
+  color: black;
+}
+/*# sourceMappingURL=Filters.css.map */
